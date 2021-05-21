@@ -1,0 +1,97 @@
+.quote{
+    padding: 6.5rem 0;
+    @include bg($gray-color);
+    &-container{
+        @include flexbox(center,)
+    }
+    &-arrow{
+        color: $gray-dark-color;
+        cursor: pointer;
+        font-size: 2rem;
+        padding: 2rem;
+    }
+    // &-content{
+    //     padding-left: 5.5rem;
+    //     padding-right: 5.5rem;
+    //     @include flexbox(center);
+    // }
+    &-icon{
+        @include size(15rem);
+        @include flexbox(center, center);
+        border: 3px solid $third-color;
+        //icon khong bi thu lai
+        flex-shrink: 0;
+    }
+    &-info{
+        padding-left: 6rem;
+    }
+    &-desc{
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.6; 
+        font-family: $secondary-color;
+        font-style: italic;
+        color: $text-color;
+        @include textClamp(3);
+    }
+    &-author{
+        font-family: $third-font;
+        font-size: 2.4rem;
+        position: relative;
+        padding-left: 7rem;
+        &::before{
+            content: "";
+            @include absoluteCenter("top");
+            @include size(6rem,4px);
+            @include bg($primary-color);
+            left: 0;
+        }
+    }
+
+    // slick slider
+
+    .slick-initialized .slick-slide{
+        display: flex;
+    }
+    .slick-arrow{
+        background-color: transparent;
+        border: 0;
+        color: $gray-dark-color;
+        cursor: pointer;
+        font-size: 3rem;
+        padding: 1rem 2rem;
+        // @include absoluteCenter("top");
+    }
+    // .slick-prev{
+    //     left: 0;
+    // }
+    // .slick-next{
+    //     right: 0;
+    // }
+
+    @include maxWidth(767px){
+        &-arrow{
+            display: none;
+        }
+        // &-content{
+        //     padding: 10px;
+        //     //hien thi theo chieu doc
+        //     flex-direction: column; 
+        // }
+        &-icon{
+            @include size(10rem);
+            img{
+                max-width: 50%;
+            }
+        }
+        &-info{
+            padding-left: 0;
+            margin-top: 3rem;
+        }
+        //tat an so dong
+        &-desc{
+            display: block;
+            font-size: 1.6rem;
+        }
+    }
+}

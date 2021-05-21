@@ -1,0 +1,115 @@
+.work{
+    padding-top: 10rem;
+    &-list{
+        @include flexbox;
+    }
+    &-column{
+        width: 25%;
+    }
+    &-content{
+        color: white;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    &-icon{
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    &-title{
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        @include textClamp(2);
+    }
+    // &-desc{
+    //     font-family: $secondary-font;
+    //     font-size: 1.5rem;
+    //     font-weight: 300;
+    //     font-style: italic;
+    // }
+    &-image{
+        @include size(100%);
+        object-fit: cover;
+    }
+    &-item{
+        height: 50%;
+    }
+    &-item--full{
+        height: 100%;
+    }
+
+    @include maxWidth(1600px){
+        &-list{
+            height: 60rem;
+        }
+    }
+
+    @include maxWidth(1279px){
+        &-list{
+            flex-wrap: wrap;
+            overflow: hidden;
+            height: auto;
+        }
+        &-column{
+            width: 50%;
+        }
+        &-item{
+            height: 42rem;
+        }
+        &-item--full{
+            height: 84rem;
+        }
+    }
+
+    @include maxWidth(767px){
+        padding-top: 5rem;
+        &-column{
+            width: 100%;
+        }
+        &-item,
+        &-item--full{
+            height: auto;
+        }
+    } 
+}
+ // dan trang voi css grid
+ .work-grid{
+    display: grid;
+    grid-template-columns: repeat (4, 1fr);
+    grid-template-rows: 30rem 30rem;
+    grid-template-areas: 
+    "h1 h3 h5 h6"
+    "h2 h4 h5 h7";
+    .work-item{
+        height: 100% !important;
+        &:first-child{
+            grid-area: h1;
+        }
+        &:last-child{
+            grid-area: h7;
+        }
+        &:nth-child(2){
+            grid-area: h2;
+        }
+        &:nth-child(3){
+            grid-area: h3;
+        }
+        &:nth-child(4){
+            grid-area: h4;
+        }
+        &:nth-child(5){
+            grid-area: h5;
+        }
+        &:nth-child(6){
+            grid-area: h6;
+        }
+    }
+}
+@include maxWidth(767px){
+    .work-grid{
+        //dt khong can chia cot
+        display: block;
+    }
+}
+
+@include hoverEffect(".work-item",".work-content","false")

@@ -1,0 +1,85 @@
+.team{
+    background-color: #fff;
+    padding: 10rem;
+    --image-height:47rem;
+    &-list{
+        @include flexbox(stretch, space-between);
+    }
+    &-item{
+        width: calc(33.33% - 20px);
+    }
+    &-image{
+        //co dinh chieu cao anh
+        @include size(100%,var(--image-height));
+        object-fit: cover;
+    }
+    &-info{
+        // margin-top: 3rem;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        //tranh pha vo khung hinh
+        height: calc(100% - var(--image-height));
+        @include flexbox(center, space-between, column)
+    }
+    &-name{
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        line-height: 1.4;
+        @include textClamp(2);
+    }
+    &-position{
+        font-size: 1.5rem;
+        font-weight: 300;
+        font-style: italic;
+        color: $text-color;
+    }
+    &-social{
+        @include flexbox(center,center);
+    }
+    &-social-item:not(:first-child){
+        border-left: 1px solid $primary-color;
+    }
+    &-social-link{
+        //the a la inline nen set block
+        @include flexbox(center,center);
+        @include size(6rem);
+        @include bg($secondary-color);
+        color: $primary-color;
+        font-size: 2rem;
+        &:hover{
+            color: white;
+            @include bg($primary-color);
+            transition: all 0.25s ease;
+        }
+    }
+    
+    @include maxWidth(1023px){
+        padding: 5rem 0;
+        &-list{
+            @include touchSlider(55%);
+        }
+    }
+    @include maxWidth(767px){
+        // &-image{
+        //     height: 40rem;
+        // }
+        // &-info{
+        //     height: calc(100%-40rem);
+        // }
+        --image-height:40rem;
+        &-list{
+            @include touchSlider(95%);
+        }
+    }
+
+}
+.brand{
+    padding: 8rem 0;
+    @include bg($gray-color);
+    @include maxWidth(767px){
+        padding: 3rem 0;
+    }
+}
+//hieu ung lop man
+@include hoverEffect(".team-main",".team-content");

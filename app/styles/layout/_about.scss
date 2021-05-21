@@ -1,0 +1,125 @@
+.about{
+    padding-top: 9.3rem;
+    padding-bottom: 11rem;
+    background-color: #fff;
+    //Dan trang flex-box
+    // &-list{
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     margin-left: -3rem;
+    // }
+    // &-item{
+    //     margin-left: 3rem;
+    //     width: calc(33% - 3rem);
+    // }
+    //Dan trang grid
+    &-list{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-column-gap: 3rem ;
+    }
+    &-item{
+        position: relative;
+        z-index: 1;
+        transition: transform 0.25s linear;
+    }
+    &-item:hover{
+        //dich chuyen toan bo div item
+        transform: translate(-1rem, -1rem);
+        .about-content{
+            opacity: 1;
+            visibility: visible;
+          
+        }
+        &::after{
+            //dich chuyen lop phu ben duoi
+            transform: translate(1rem, 1rem);
+        }
+    }
+    //hieu ung lop man
+    &-item:after{
+        content:"";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // @include absoluteFull();
+        @include bg($third-color);
+        transition: transform 0.25s linear;
+        //di chuyen lop phu man 
+        // transform: translate(1rem, 1rem);
+        z-index: -1;
+    }
+    &-content{
+        // @include absoluteFull();
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.25s linear;
+        background: linear-gradient(
+            to bottom,
+            rgba($primary-color, 0.8),
+            rgba($secondary-color, 0.8),
+        );
+        z-index: 2;
+        color: white;
+        //can giua 2 inline
+        @include flexbox(center,center,column);
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        // flex-direction: column; 
+        text-transform: uppercase;
+        text-align:center;
+        padding: 2rem;
+    }
+    &-icon{
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    &-title{
+        font-weight: bold;
+        font-size: 1.8rem;
+        line-height: 1.4;
+        //gioi han hien thi cua chu
+        @include textClamp(2,100%);
+        //rot chu
+        // word-break: break-all;
+    }
+    @include maxWidth(767px){
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        //flexbox responsive
+        // &-item{
+        //     width: 100%;
+        //     margin-bottom: 2.5rem;
+        // }
+
+        //grid
+        &-list{
+            //scroll ngang
+            grid-auto-columns: 80%;
+            grid-template-columns: unset;            
+            grid-row-gap: 2.5rem;
+            //tu dong tao thanh cac cot
+            grid-auto-flow: column;
+            //scroll ngang khi tran ra
+            overflow-x: auto;
+            padding: 1rem;
+            scroll-snap-type: x mandatory;
+            scroll-snap-stop: always;
+            @include hideScroll();
+        }
+        &-item{
+            //can giu the
+            scroll-snap-align: center;
+        }
+    }
+
+}
+// @include hoverEffect(".about-item",".about-content");
